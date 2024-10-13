@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -13,8 +13,22 @@ import img5 from '@/assets/swiper/5.avif';
 import img6 from '@/assets/swiper/6.jpg';
 import img7 from '@/assets/swiper/7.jpeg';
 import Title from '../../Shared/Title/Title';
+import './Carousel.css';
 
 const Carousel = () => {
+  const progressCircle = useRef(null); // Ref for circle
+  const progressContent = useRef(null); // Ref for text inside progress
+
+  // Handle progress animation for Swiper autoplay
+  const onAutoplayTimeLeft = (swiper, time, progress) => {
+    if (progressCircle.current) {
+      progressCircle.current.style.strokeDashoffset = 125.6 * (1 - progress); // Adjust stroke offset
+    }
+    if (progressContent.current) {
+      progressContent.current.textContent = `${Math.ceil(time / 1000)}s`; // Show time remaining
+    }
+  };
+
   const slides = [
     {
       img: img1,
@@ -66,8 +80,8 @@ const Carousel = () => {
       effect="fade"
       autoplay={{ delay: 3000, disableOnInteraction: false }}
       pagination={{ clickable: true }}
-      // navigation
       loop={true}
+      onAutoplayTimeLeft={onAutoplayTimeLeft} // Handle progress
       className="w-full h-[600px] rounded-lg overflow-hidden"
     >
       {slides.map((slide, index) => (
@@ -88,6 +102,24 @@ const Carousel = () => {
           </div>
         </SwiperSlide>
       ))}
+
+      {/* Circular Progress Indicator */}
+      <div className="autoplay-progress absolute bottom-4 right-4 flex flex-col items-center">
+        <svg viewBox="0 0 48 48" className="w-12 h-12">
+          <circle
+            ref={progressCircle}
+            cx="24"
+            cy="24"
+            r="20"
+            stroke="white"
+            strokeWidth="4"
+            fill="transparent"
+            strokeDasharray="125.6"
+            strokeDashoffset="125.6"
+          />
+        </svg>
+        <span ref={progressContent} className="text-white mt-1 text-sm"></span>
+      </div>
     </Swiper>
   );
 };
