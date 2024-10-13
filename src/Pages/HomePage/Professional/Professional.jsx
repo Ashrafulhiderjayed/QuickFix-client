@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import professional from '../../../assets/Professional/professional(1).jpg';
+import professional from '../../../assets/Professional/professional.jpg';
 import { FaArrowRight } from 'react-icons/fa';
 import { GiAutoRepair } from 'react-icons/gi';
 import { MdOutlineTireRepair } from 'react-icons/md';
