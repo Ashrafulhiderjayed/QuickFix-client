@@ -4,8 +4,8 @@ import { FaLinkedinIn } from "react-icons/fa";
 import './Login.css'
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
     const {signIn, signInWithGoogle} = useContext(AuthContext);

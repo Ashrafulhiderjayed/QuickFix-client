@@ -50,7 +50,7 @@ const Navbar = () => {
 
         {/* Navbar End */}
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <Link to="login" className="btn">Login</Link>
         </div>
       </div>
     </section>
