@@ -6,7 +6,7 @@ import './TopNav.css'
 
 const TopNav = () => {
     return (
-        <section className="flex justify-end text-white w-full" id="topNav">
+        <section className="flex justify-end text-white bg-white w-full" id="topNav">
             {/* <div className="" > */}
 
                 <div className="gap-2" id="Custom-width">
