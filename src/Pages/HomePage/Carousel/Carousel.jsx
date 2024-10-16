@@ -91,14 +91,16 @@ const Carousel = () => {
             alt={`Slide ${index + 1}`}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 flex items-center justify-start bg-gradient-to-r from-black/90 via-black/70 to-transparent">
-            <div className="space-y-8 text-white max-w-4xl ps-36 pe-12 py-10">
+          <div className="absolute inset-0 ps-4 flex items-center justify-start bg-gradient-to-r from-black/90 via-black/70 to-transparent">
+          <div className='max-w-screen-2xl mx-auto'>
+            <div className="space-y-8 text-white flex-col text-start w-1/2 py-10">
               <Title text={slide.span} className="text-xl font-semibold text-mainColor" />
               <h2 className="text-5xl font-bold leading-tight">{slide.h2}</h2>
               <button className="btn btn-lg bg-mainColor hover:bg-mainColor/80 text-white border-none transition-all duration-300 ease-in-out transform hover:scale-105">
                 {slide.button}
               </button>
             </div>
+          </div>
           </div>
         </SwiperSlide>
       ))}

@@ -8,55 +8,11 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
-    const {signIn, signInWithGoogle} = useContext(AuthContext);
+    // const {signIn, signInWithGoogle} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    //eta amr kora
-    // const handleLogin = event =>{
-    //     event.preventDefault();
-    //     const form = event.target;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     console.log(email, password);
-
-    //     signIn(email, password)
-    //     .then(result =>{
-    //         const user = result.user;
-    //         // console.log(user);
-    //         // navigate(from, {replace: true});
-    //         navigate(location?.state ? location?.state : '/')
-    //     })
-    //     .catch(error =>{
-    //         console.log(error);
-    //     })
-    //     form.reset();
-    // }
-
-    //p.h
-    const handleLogin = event => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
-        signIn(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                Swal.fire({
-                    title: 'User Login Successful.',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                });
-                navigate(from, { replace: true });
-            })
-    }
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
@@ -83,7 +39,7 @@ const Login = () => {
                         <FaLinkedinIn className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content" />
                     </span>
                     <p className="text-zinc-600 text-center pt-2">or use your account</p>
-                    <form onSubmit={handleLogin} className="card-body">
+                    <form className="card-body">
                         <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>

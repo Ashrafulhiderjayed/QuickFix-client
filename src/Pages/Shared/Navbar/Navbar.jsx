@@ -6,13 +6,14 @@ const Navbar = () => {
   const navItems = (
     <>
       <li><Link to="/">Home</Link></li>
+      <li><Link to="/">Shop</Link></li>
       <li><Link to="/">Appointment</Link></li>
     </>
   );
 
   return (
-    <section className=''>
-      <div className="navbar bg-base-100 flex items-center">
+    <section className='bg-white'>
+      <div className="navbar bg-base-100 flex items-center mx-auto max-w-screen-2xl">
         {/* Navbar Start */}
         <div className="navbar-start flex items-center">
           <div className="dropdown">
