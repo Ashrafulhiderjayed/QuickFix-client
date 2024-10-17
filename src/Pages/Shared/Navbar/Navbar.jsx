@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../../assets/logoPng.png';
 import { Link } from 'react-router-dom';
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   const navItems = (
@@ -51,7 +52,7 @@ const Navbar = () => {
 
         {/* Navbar End */}
         <div className="navbar-end">
-          <Link to="login" className="btn">Login</Link>
+          <Link to="login" className="btn border-b-4 border-b-red-400"><FaUser /> Login</Link>
         </div>
       </div>
     </section>
