@@ -4,7 +4,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import './Login.css'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 
@@ -18,7 +18,7 @@ const Login = () => {
     const from = location.state?.From?.pathname || "/";
 
     useEffect(() => {
-        loadCaptchaEnginge(6);
+        // loadCaptchaEnginge(6);
     }, [])
 
     const handleLogin = event => {
