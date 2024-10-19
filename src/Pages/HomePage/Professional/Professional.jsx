@@ -6,6 +6,7 @@ import { MdOutlineTireRepair } from 'react-icons/md';
 import { MdCarRepair } from 'react-icons/md';
 import './Professional.css';
 import Title from '../../Shared/Title/Title';
+import AOS from 'aos';
 
 const Professional = () => {
   return (
@@ -48,7 +49,7 @@ const Professional = () => {
           times of vehicles in Sydney, Australia.
         </p>
         <NavLink className="flex items-center">
-          MORE ABOUT US <FaArrowRight className="inline ml-2" />{' '}
+          MORE ABOUT US <FaArrowRight className="inline ml-2" data-aos="fade-left" data-aos-delay="10" />{' '}
         </NavLink>
       </div>
     </section>
