@@ -12,8 +12,8 @@ import img4 from '@/assets/swiper/4.avif';
 import img5 from '@/assets/swiper/5.avif';
 import img6 from '@/assets/swiper/6.jpg';
 import img7 from '@/assets/swiper/7.jpeg';
-import Title from '../../Shared/Title/Title';
 import './Carousel.css';
+import Title from '../../../Components/Title/Title';
 
 const Carousel = () => {
   const progressCircle = useRef(null); // Ref for circle

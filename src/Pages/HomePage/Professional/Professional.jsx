@@ -5,8 +5,8 @@ import { GiAutoRepair } from 'react-icons/gi';
 import { MdOutlineTireRepair } from 'react-icons/md';
 import { MdCarRepair } from 'react-icons/md';
 import './Professional.css';
-import Title from '../../Shared/Title/Title';
 import AOS from 'aos';
+import Title from '../../../Components/Title/Title';
 
 const Professional = () => {
   return (
@@ -36,8 +36,8 @@ const Professional = () => {
         </div>
       </div>
       {/* Right div */}
-      <div className="lg:flex-1 pl-5 order-1 lg:order-2 mt-5">
-      {/* <div className="lg:flex-1 pl-5 order-1 lg:order-2 bg-gradient-to-r from-[#FF4B2B] to-[#FF416C] text-white"> */}
+      <div className="lg:flex-1 pl-5 order-1 lg:order-2 mt-12">
+        {/* <div className="lg:flex-1 pl-5 order-1 lg:order-2 bg-gradient-to-r from-[#FF4B2B] to-[#FF416C] text-white"> */}
         <Title text="CAR SERVICES WITH YOU IN MIND"></Title>
         <h2 className="text-2xl lg:text-6xl font-bold">
           WE ARE A PROFESSIONAL AUTO REPAIR SERVICE
