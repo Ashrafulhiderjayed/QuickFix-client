@@ -38,8 +38,9 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <a className="text-xl">
+          <a className="text-xl flex items-center">
             <img className="h-16 w-auto" src={logo} alt="Logo" />
+            <p className='font-semibold'>QuickFix Motors</p>
           </a>
         </div>
 
