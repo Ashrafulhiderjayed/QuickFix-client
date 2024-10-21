@@ -19,7 +19,7 @@ const Shop = () => {
     console.log(products);
 
     return (
-        <section className='min-h-screen'>
+        <section className='bg-white min-h-screen'>
             <Helmet>
                 <title>QuickFix | Shop</title>
             </Helmet>
@@ -78,7 +78,7 @@ const Shop = () => {
                         </select></p>
                     </div>
 
-                    <div className='grid grid-cols-3 gap-6 mt-5'>
+                    <div className='grid grid-cols-3 gap-10 mt-5'>
                         {
                             products.map((product, index) => <ShopCard
                             key={index}
