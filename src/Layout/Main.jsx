@@ -13,8 +13,11 @@ const Main = () => {
         <div>
             { removeNavFooter || <TopNav></TopNav>}
             { removeNavFooter || <Navbar></Navbar>}
+            <span>ksdjlajfd</span>
             <Outlet />
-            { removeNavFooter || <Footer></Footer>}
+            {/* { removeNavFooter || <Footer></Footer>} */}
+            <div>Footer</div>
+            <span>ksdjlajfd</span>
         </div>
     );
 };

@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import shopCover from '../../assets/shop/shop-cover.webp'
 import soundTab from '../../assets/shop/soundTab.avif'
 import wheelsTab from '../../assets/shop/wheelsTab.avif'
 import featuredTab from '../../assets/shop/featuredTab.avif'
 import { Helmet } from 'react-helmet-async';
+import ShopCard from './ShopCard';
 
 const Shop = () => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch('shop.json')
+            .then(response => response.json())
+            .then(data => setProducts(data))
+            .catch(error => console.error('Error:', error));
+    }, []);
+
+    console.log(products);
+
     return (
-        <section className='bg-white'>
+        <section className='min-h-screen'>
             <Helmet>
                 <title>QuickFix | Shop</title>
             </Helmet>
@@ -54,19 +66,25 @@ const Shop = () => {
                         <li className='flex gap-2 mb-1 pb-2'><input type="checkbox" className="checkbox" />Sound</li>
                     </ul>
                 </div>
-                <div className='bg-red-100 h-80 w-4/5'>
-                    <div className='text-zinc-400 flex justify-between items-center ps-2 border-2'>
-                        <p>Showing 1 to 12 of 37 items</p>
-                        <p className='flex items-center gap-2'>Sort by: <select className="select select-success w-28">
-                            <option disabled selected>Select Category</option>
-                            <option>One Piece</option>
-                            <option>Naruto</option>
-                            <option>Death Note</option>
-                            <option>Attack on Titan</option>
-                            <option>Bleach</option>
-                            <option>Fullmetal Alchemist</option>
-                            <option>Jojo's Bizarre Adventure</option>
+                <div className='flex-grow'>
+                    <div className='text-zinc-400 flex justify-between items-center p-2 border-2'>
+                        <p>Showing 37 items</p>
+                        <p className='flex items-center gap-2'>Sort by: <select className="select select-success select-sm w-36">
+                            <option disabled selected>Featured</option>
+                            <option>Best Selling</option>
+                            <option>Alphabetically A-Z</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
                         </select></p>
+                    </div>
+
+                    <div className='grid grid-cols-3 gap-6 mt-5'>
+                        {
+                            products.map((product, index) => <ShopCard
+                            key={index}
+                            product={product}
+                            ></ShopCard>)
+                        }
                     </div>
                 </div>
             </div>

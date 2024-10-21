@@ -1,0 +1,51 @@
+[
+    {
+      "_id": 1,
+      "name": "Pioneer Car Stereo",
+      "category": "Sounds",
+      "image": "https://i.ibb.co.com/jw41xNm/sound2.webp",
+      "price": 250,
+      "rating": 4.7
+    },
+    {
+      "_id": 2,
+      "name": "Sony Xplod Subwoofer",
+      "category": "Sounds",
+      "image": "https://i.ibb.co.com/26RnRSK/sound1.webp",
+      "price": 120,
+      "rating": 4.5
+    },
+    {
+      "_id": 3,
+      "name": "Alloy Sport Wheels",
+      "category": "Wheels",
+      "image": "https://i.ibb.co.com/fHwcLVG/wheels1.webp",
+      "price": 300,
+      "rating": 4.8
+    },
+    {
+      "_id": 4,
+      "name": "Goodyear Performance Tires",
+      "category": "Wheels",
+      "image": "https://i.ibb.co.com/4mkty2c/wheels3.webp",
+      "price": 180,
+      "rating": 4.6
+    },
+    {
+      "_id": 5,
+      "name": "LED Headlights Kit",
+      "category": "Wheels",
+      "image": "https://i.ibb.co.com/Z8q1TBv/wheels2.webp",
+      "price": 80,
+      "rating": 4.9
+    },
+    {
+      "_id": 6,
+      "name": "LED Headlights Kit",
+      "category": "Featured",
+      "image": "https://i.ibb.co.com/Z8q1TBv/wheels2.webp",
+      "price": 80,
+      "rating": 4.9
+    }
+  ]
+  
