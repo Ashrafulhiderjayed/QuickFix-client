@@ -15,7 +15,7 @@ const ShopCard = ({ product }) => {
             <div className="card-body">
             <div className="text-right"><p className='badge badge-secondary'>NEW</p></div>
                 <Rating style={{ maxWidth: 120, height: '15px' }} value={rating} onChange={setRating} />
-                <h2 className="card-title">
+                <h2 className="card-title font-mono line-clamp-2">
                     {name}
                     {/* <div className="badge badge-secondary">NEW</div> */}
                 </h2>

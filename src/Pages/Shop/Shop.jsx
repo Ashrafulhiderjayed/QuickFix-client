@@ -8,6 +8,7 @@ import ShopCard from './ShopCard';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('all');
 
     useEffect(() => {
         fetch('shop.json')
@@ -16,7 +17,13 @@ const Shop = () => {
             .catch(error => console.error('Error:', error));
     }, []);
 
-    console.log(products);
+    const handleCategoryClick = (category) =>{
+        console.log('clicked category:', category);
+        setSelectedCategory(category);
+    }
+
+    const filteredProducts = products.filter(item => item.category == selectedCategory || item.category == 'all')
+
 
     return (
         <section className='bg-white min-h-screen'>
@@ -41,15 +48,15 @@ const Shop = () => {
 
             {/* Shop Tab */}
             <div className='flex gap-5 justify-center py-10 bg-white'>
-                <div>
+                <div onClick={() => handleCategoryClick('Sounds')}>
                     <img src={soundTab} alt="" className='border-4 border-black h-52 rounded-full' />
                     <p className='hover:text-mainColor text-center pt-4 text-xl font-semibold font-mono'>Sounds</p>
                 </div>
-                <div>
+                <div onClick={() => handleCategoryClick('Wheels')}>
                     <img src={wheelsTab} alt="" className='border-4 border-black h-52 rounded-full' />
                     <p className='hover:text-mainColor text-center pt-4 text-xl font-semibold font-mono'>Wheels</p>
                 </div>
-                <div>
+                <div onClick={() => handleCategoryClick('Featured')}>
                     <img src={featuredTab} alt="" className='border-4 border-black h-52 rounded-full' />
                     <p className='hover:text-mainColor text-center pt-4 text-xl font-semibold font-mono'>Featured</p>
                 </div>
@@ -80,7 +87,7 @@ const Shop = () => {
 
                     <div className='grid grid-cols-3 gap-10 mt-5'>
                         {
-                            products.map((product, index) => <ShopCard
+                            filteredProducts.map((product, index) => <ShopCard
                             key={index}
                             product={product}
                             ></ShopCard>)
