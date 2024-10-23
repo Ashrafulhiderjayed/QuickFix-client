@@ -29,47 +29,49 @@ const Login = () => {
         const email = form?.email?.value;
         const password = form?.password?.value;
 
-        signIn(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "User Login Successful",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                navigate(from, { replace: true });
-            })
+        console.log(email, password);
+
+        // signIn(email, password)
+        //     .then(result => {
+        //         const user = result.user;
+        //         console.log(user);
+        //         Swal.fire({
+        //             position: "top-end",
+        //             icon: "success",
+        //             title: "User Login Successful",
+        //             showConfirmButton: false,
+        //             timer: 1500
+        //         });
+        //         navigate(from, { replace: true });
+        //     })
     }
 
 
-    const handleValidateCaptcha = () => {
-        const user_captcha_value = captchaRef.current.value;
-        if (validateCaptcha(user_captcha_value)) {
-          setDisabled(false);
-          console.log('Captcha validated successfully');
-        }
-        else {
-          setDisabled(true);
-          console.log('Captcha validation failed');
-        }
-      }
+    // const handleValidateCaptcha = () => {
+    //     const user_captcha_value = captchaRef.current.value;
+    //     if (validateCaptcha(user_captcha_value)) {
+    //         setDisabled(false);
+    //         console.log('Captcha validated successfully');
+    //     }
+    //     else {
+    //         setDisabled(true);
+    //         console.log('Captcha validation failed');
+    //     }
+    // }
 
 
-    const handleGoogleSignIn = () => {
-        signInWithGoogle()
-            .then(result => {
-                const loggedUser = result.user;
-                // console.log(loggedUser);
-                // navigate(from, { replace: true });
-                navigate(location?.state ? location?.state : '/')
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
+    // const handleGoogleSignIn = () => {
+    //     signInWithGoogle()
+    //         .then(result => {
+    //             const loggedUser = result.user;
+    //             // console.log(loggedUser);
+    //             // navigate(from, { replace: true });
+    //             navigate(location?.state ? location?.state : '/')
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // }
 
     return (
         <section className="hero min-h-screen bg-base-200">
@@ -79,11 +81,11 @@ const Login = () => {
                     <h2 className="text-center text-5xl font-bold pt-10">Sign in</h2>
                     <span className="flex align-middle justify-center mt-7">
                         <FaFacebookF className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content" />
-                        <button onClick={handleGoogleSignIn}><IoLogoGoogleplus className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content mx-4" /></button>
+                        <button><IoLogoGoogleplus className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content mx-4" /></button>
                         <FaLinkedinIn className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content" />
                     </span>
                     <p className="text-zinc-600 text-center pt-2">or use your account</p>
-                    <form className="card-body">
+                    <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>

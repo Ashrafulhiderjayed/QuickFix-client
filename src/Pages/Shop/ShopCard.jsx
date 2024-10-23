@@ -13,7 +13,7 @@ const ShopCard = ({ product }) => {
                 <img src={image} alt="Shoes" className='h-50 w-full' />
             </figure>
             <div className="card-body">
-            <div className="text-right"><p className='badge badge-secondary'>NEW</p></div>
+            <div className="text-right">{ category == 'Featured' ? <p className='badge badge-secondary'>NEW</p> : null}</div>
                 <Rating style={{ maxWidth: 120, height: '15px' }} value={rating} onChange={setRating} />
                 <h2 className="card-title font-mono line-clamp-2">
                     {name}

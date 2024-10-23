@@ -10,8 +10,14 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('all');
 
+    // useEffect(() => {
+    //     // Set the initial selected category to 'all' to show all items
+    //     setSelectedCategory('all');
+    //   }, []);
+      
+    // Fetch the shop data from JSON file and update the products state when the component mounts
     useEffect(() => {
-        fetch('shop.json')
+        fetch('http://localhost:5000/shop')
             .then(response => response.json())
             .then(data => setProducts(data))
             .catch(error => console.error('Error:', error));
@@ -22,7 +28,13 @@ const Shop = () => {
         setSelectedCategory(category);
     }
 
-    const filteredProducts = products.filter(item => item.category == selectedCategory || item.category == 'all')
+    // const filteredProducts = products.filter(item => item.category == selectedCategory || item.category == 'all')
+    const filteredProducts = products.filter(item => {
+        if(selectedCategory === 'all'){
+            return true;
+        }
+        return item.category === selectedCategory;
+    })
 
 
     return (
