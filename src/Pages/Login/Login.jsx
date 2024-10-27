@@ -33,36 +33,44 @@ const Login = () => {
         const form = event.target;
         const email = form?.email?.value;
         const password = form?.password?.value;
-
-        console.log(email, password);
-
-        signIn(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "User Login Successful",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                navigate(from, { replace: true });
-            })
-    }
-
-
-    const handleValidateCaptcha = () => {
         const user_captcha_value = captchaRef.current.value;
+    
+        // Validate captcha first
         if (validateCaptcha(user_captcha_value)) {
-            setDisabled(false);
             console.log('Captcha validated successfully');
-        }
-        else {
-            setDisabled(true);
+            
+            // Proceed with Firebase sign-in if captcha is valid
+            signIn(email, password)
+                .then(result => {
+                    const user = result.user;
+                    console.log(user);
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "User Login Successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate(from, { replace: true });
+                })
+                .catch(error => {
+                    console.error("Login failed:", error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Login Failed',
+                        text: error.message
+                    });
+                });
+        } else {
             console.log('Captcha validation failed');
+            Swal.fire({
+                icon: 'error',
+                title: 'Captcha Validation Failed',
+                text: 'Please complete the captcha correctly.'
+            });
         }
-    }
+    };
+
 
 
     const handleGoogleSignIn = () => {
@@ -112,7 +120,7 @@ const Login = () => {
                                 <FiRefreshCw onClick={handleReloadCaptcha} className="cursor-pointer ml-2 text-lg" />
                             </label>
                             <input type="text" ref={captchaRef} name="captcha" placeholder="Enter Captcha" className="input bg-slate-100" required />
-                            <button onClick={handleValidateCaptcha} className="btn btn-xs btn-outline mt-2">Validate</button>
+                            {/* <button onClick={handleValidateCaptcha} className="btn btn-xs btn-outline mt-2">Validate</button> */}
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
