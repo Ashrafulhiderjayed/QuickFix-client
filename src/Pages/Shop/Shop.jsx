@@ -10,10 +10,6 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('all');
 
-    // useEffect(() => {
-    //     // Set the initial selected category to 'all' to show all items
-    //     setSelectedCategory('all');
-    //   }, []);
       
     // Fetch the shop data from JSON file and update the products state when the component mounts
     useEffect(() => {
@@ -24,7 +20,7 @@ const Shop = () => {
     }, []);
 
     const handleCategoryClick = (category) =>{
-        console.log('clicked category:', category);
+        // console.log('clicked category:', category);
         setSelectedCategory(category);
     }
 

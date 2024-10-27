@@ -9,6 +9,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const { signInWithGoogle } = useAuth();
@@ -79,6 +80,9 @@ const Login = () => {
 
     return (
         <section className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>QuickFix | Sign in</title>
+            </Helmet>
             <div className="flex flex-col lg:flex-row shadow-xl hover:shadow-lg">
                 {/* login div  */}
                 <div className="lg:flex-1 p-1 order-2 lg:order-1 bg-white w-96">
