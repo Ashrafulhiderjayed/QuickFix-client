@@ -1,11 +1,12 @@
+import { FaFacebookF, FaEye, FaEyeSlash } from "react-icons/fa";
 // import { NavLink } from 'react-router-dom';
-import { FaFacebookF } from "react-icons/fa";
+// import { FaFacebookF } from "react-icons/fa";
 import { IoLogoGoogleplus } from "react-icons/io";
 import { FaLinkedinIn } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import './SignUp.css'
 import { NavLink, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
@@ -16,6 +17,9 @@ const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
+    
+    // State to toggle password visibility
+    const [showPassword, setShowPassword] = useState(false);
 
     const onSubmit = data => {
         console.log(data);
@@ -26,15 +30,11 @@ const SignUp = () => {
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        // create user entry in the database
-                        const userInfo = {
-                            name: data.name,
-                            email: data.email,
-                        }
+                        const userInfo = { name: data.name, email: data.email };
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
-                                    console.log('user added to the database')
+                                    console.log('user added to the database');
                                     reset();
                                     Swal.fire({
                                         position: 'top-end',
@@ -45,14 +45,11 @@ const SignUp = () => {
                                     });
                                     navigate('/');
                                 }
-                            })
-
-
+                            });
                     })
-                    .catch(error => console.log(error))
-            })
+                    .catch(error => console.log(error));
+            });
     };
-
 
     const handleGoogleSignIn = async () => {
         try {
@@ -71,8 +68,7 @@ const SignUp = () => {
         } catch (error) {
             console.log(error);
         }
-    }
-
+    };
 
     return (
         <section className="hero min-h-screen bg-base-200">
@@ -80,7 +76,6 @@ const SignUp = () => {
                 <title>QuickFix | Signup</title>
             </Helmet>
             <div className="flex flex-col lg:flex-row-reverse shadow-xl hover:shadow-lg">
-                {/* without signUp div  */}
                 <div id='changed-item-vertically' className="lg:flex-1 px-5 order-1 lg:order-2 bg-gradient-to-br from-[#ff2b2b] to-[#FF416C] text-white text-center w-96 items-center justify-center">
                     <h2 className="items-center text-5xl text-center font-bold pt-8">Welcome Back!</h2>
                     <p className="my-4">Are you have created account before? If you are already a valid user. Please sign in</p>
@@ -89,7 +84,6 @@ const SignUp = () => {
                     </NavLink>
                 </div>
 
-                {/* sign up div  */}
                 <div className="lg:flex-1 p-1 order-2 lg:order-1 bg-white w-96">
                     <h2 className="text-center text-5xl font-bold pt-8">Sign up</h2>
                     <span className="flex align-middle justify-center mt-7">
@@ -125,24 +119,32 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" {...register("password", { required: true })} name="password" placeholder="password" className="input bg-slate-100" />
-                            {errors.password && <span className="text-red-500">Name field is required</span>}
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                            <div className="relative">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    {...register("password", { required: true })}
+                                    name="password"
+                                    placeholder="password"
+                                    className="input bg-slate-100 w-full"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500"
+                                >
+                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                </button>
+                            </div>
+                            {errors.password && <span className="text-red-500">Password field is required</span>}
                         </div>
                         <div className="form-control my-6">
                             <button className="btn bg-loginOrangeColor text-white font-bold w-3/5 px-2 ml-16 rounded-3xl border-none shadow-2xl hover:shadow-xl hover:bg-black">SIGN UP</button>
                         </div>
                     </form>
                 </div>
-
             </div>
         </section>
     );
 };
 
 export default SignUp;
-
-
-

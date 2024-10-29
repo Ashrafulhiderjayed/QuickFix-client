@@ -1,4 +1,4 @@
-import { FaFacebookF } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaFacebookF } from "react-icons/fa";
 import { IoLogoGoogleplus } from "react-icons/io";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FiRefreshCw } from "react-icons/fi";
@@ -15,6 +15,7 @@ const Login = () => {
     const { signInWithGoogle } = useAuth();
     const captchaRef = useRef(null);
     const [disabled, setDisabled] = useState(true);
+    const [showPassword, setShowPassword] = useState(false);
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -37,7 +38,7 @@ const Login = () => {
     
         // Validate captcha first
         if (validateCaptcha(user_captcha_value)) {
-            console.log('Captcha validated successfully');
+            // console.log('Captcha validated successfully');
             
             // Proceed with Firebase sign-in if captcha is valid
             signIn(email, password)
@@ -112,7 +113,13 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input bg-slate-100" required />
+                            <div className="relative">
+                                <input type={showPassword ? 'text' : 'password'} name="password" placeholder="password" className="input bg-slate-100 w-full" required />
+                                <button type="button" 
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute top-1/2 transform -translate-y-1/2 right-3 text-gray-500"
+                                >{showPassword ? <FaEyeSlash /> : <FaEye />}</button>
+                            </div>
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -120,7 +127,6 @@ const Login = () => {
                                 <FiRefreshCw onClick={handleReloadCaptcha} className="cursor-pointer ml-2 text-lg" />
                             </label>
                             <input type="text" ref={captchaRef} name="captcha" placeholder="Enter Captcha" className="input bg-slate-100" required />
-                            {/* <button onClick={handleValidateCaptcha} className="btn btn-xs btn-outline mt-2">Validate</button> */}
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
