@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Login = () => {
     const { signInWithGoogle } = useAuth();
@@ -96,11 +97,7 @@ const Login = () => {
                 {/* login div  */}
                 <div className="lg:flex-1 p-1 order-2 lg:order-1 bg-white w-96">
                     <h2 className="text-center text-5xl font-bold pt-10">Sign in</h2>
-                    <span className="flex align-middle justify-center mt-7">
-                        <FaFacebookF className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content" />
-                        <button><IoLogoGoogleplus onClick={handleGoogleSignIn} className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content mx-4" /></button>
-                        <FaLinkedinIn className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content" />
-                    </span>
+                    <SocialLogin />
                     <p className="text-zinc-600 text-center pt-2">or use your account</p>
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
