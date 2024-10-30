@@ -14,16 +14,27 @@ const TopNav = () => {
     }, [user]);
 
     return (
-        <section className="flex justify-end text-white w-full" id="topNav">
+        <section className="flex">
             {/* <div className="" > */}
-                <h3 className="text-black w-full text-start mt-4 ps-5 font-semibold"> USER: <span className="text-blue-600 font-semibold">{user?.displayName}</span> </h3>
+            <div className="w-1/6 ps-3">
+  <div className="flex items-center space-x-2 bg-mainColor text-white rounded-lg shadow-md p-4">
+    <span className="font-semibold">USER:</span>
+    <h3 className="text-lg font-semibold text-blue-200">
+      {user?.displayName || 'Guest'}
+    </h3>
+  </div>
+</div>
+
+
+            <div className="flex justify-end text-white w-full" id="topNav">
                 <div className="gap-2" id="Custom-width">
                     <p className="mt-4 flex items-center p-2 font-bold text-xs hover:text-red-500"><FaPhone className='inline mr-2 text-xs' />CALL US NOW +61-2-123-1234</p>
                     <p className="mt-4 h-4 border-2"></p>
-                    <p className="mt-4 flex items-center p-2 font-bold text-xs hover:text-red-500"><PiNewspaperClippingFill className='inline mr-2 text-sm'/><Link to="appointment">APPOINTMENT</Link> </p>
+                    <p className="mt-4 flex items-center p-2 font-bold text-xs hover:text-red-500"><PiNewspaperClippingFill className='inline mr-2 text-sm' /><Link to="appointment">APPOINTMENT</Link> </p>
                     <p className="mt-4 h-4 border-2"></p>
                     <p className="mt-4 mr-2 flex items-center p-2 font-bold text-xs hover:text-red-500"><MdPinDrop className='inline mr-2 text-sm' /> FIND US ON MAP </p>
                 </div>
+            </div>
 
             {/* </div> */}
         </section>
