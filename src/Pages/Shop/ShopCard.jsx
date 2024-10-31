@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { IoCartSharp } from "react-icons/io5";
 import { Rating } from '@smastrom/react-rating'
-
 import '@smastrom/react-rating/style.css'
-import { AuthContext } from '../../providers/AuthProvider';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const ShopCard = ({ product }) => {
     const { name, image, price, category, _id } = product;
     const {user} = useAuth();
     const [rating, setRating] = useState(4) // Initial value
+    const axiosSecure = useAxiosSecure();
 
     const handleAddToCart = (product) => {
         if(user) {
@@ -23,7 +23,7 @@ const ShopCard = ({ product }) => {
                 image,
                 price
             }
-            axios.post('http://localhost:5000/carts', cartItem,)
+            axiosSecure.post('/carts', cartItem,)
             .then(res => {
                 console.log(res.data);
                 Swal.fire({
