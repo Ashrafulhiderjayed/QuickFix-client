@@ -17,11 +17,12 @@ const TopNav = () => {
         <section className="flex">
             {/* <div className="" > */}
             <div className="w-1/6 ps-3">
-  <div className="flex items-center space-x-2 bg-mainColor text-white rounded-lg shadow-md p-4">
-    <span className="font-semibold">USER:</span>
+  <div className="flex items-center space-x-2 rounded-lg shadow-md p-4">
+    {/* <span className="font-semibold">USER:</span>
     <h3 className="text-lg font-semibold text-blue-200">
       {user?.displayName || 'Guest'}
-    </h3>
+    </h3> */}
+    <p className="border-s-4 border-[#008DDA] ps-2"><span className="font-CreteRound text-lg font-semibold">user:</span> <span className="badge badge-secondary">{user?.displayName}</span></p>
   </div>
 </div>
 
