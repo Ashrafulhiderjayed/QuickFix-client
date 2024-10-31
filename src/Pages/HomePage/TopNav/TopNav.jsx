@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import './TopNav.css'
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import Title from "../../../Components/Title/Title";
 
 const TopNav = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -16,15 +17,13 @@ const TopNav = () => {
     return (
         <section className="flex">
             {/* <div className="" > */}
-            <div className="w-1/6 ps-3">
-  <div className="flex items-center space-x-2 rounded-lg shadow-md p-4">
-    {/* <span className="font-semibold">USER:</span>
-    <h3 className="text-lg font-semibold text-blue-200">
-      {user?.displayName || 'Guest'}
-    </h3> */}
-    <p className="border-s-4 border-[#008DDA] ps-2"><span className="font-CreteRound text-lg font-semibold">user:</span> <span className="badge badge-secondary">{user?.displayName}</span></p>
-  </div>
-</div>
+            {user && <div className="w-1/6 ps-3">
+                <div className="flex items-center justify-center space-x-2 rounded-lg p-4">
+
+                    <Title text="user:" />
+                    <span className="badge badge-outline -mb-1">{user?.displayName}</span>
+                </div>
+            </div>}
 
 
             <div className="flex justify-end text-white w-full" id="topNav">

@@ -1,12 +1,48 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { IoCartSharp } from "react-icons/io5";
 import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
+import { AuthContext } from '../../providers/AuthProvider';
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const ShopCard = ({ product }) => {
     const { name, image, price, category } = product;
+    const {user} = useAuth();
     const [rating, setRating] = useState(4) // Initial value
+
+    const handleAddToCart = (product) => {
+        if(user) {
+            // Add product to user's cart
+            const cartItem = {
+                menuId: _id,
+                email: user.email,
+                name,
+                image,
+                price
+            }
+            axios.post('https:localhost:5000/carts', cartItem,)
+            .then(res => {
+                console.log(res.data);
+                Swal.fire({
+                    icon: "success",
+                    title: "Added to Cart",
+                    text: "Product has been added to your cart!",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                  });
+            })
+        } else {
+            // Redirect to login page
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "You are not Logged in!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+        }
+    }
     return (
         <div className="card bg-base-100 border-2">
             <figure>
@@ -21,7 +57,7 @@ const ShopCard = ({ product }) => {
                 </h2>
                 <p className='text-red-500 font-semibold text-xl'>${price}</p>
                 <div className="card-actions justify-center">
-                    <button className='btn px-20 rounded-full hover:bg-mainColor hover:text-white'> <IoCartSharp /> Add to Cart</button>
+                    <button onClick={() => handleAddToCart(product)} className='btn px-20 rounded-full hover:bg-mainColor hover:text-white'> <IoCartSharp /> Add to Cart</button>
                 </div>
             </div>
         </div>

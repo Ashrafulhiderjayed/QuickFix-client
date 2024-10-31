@@ -105,14 +105,14 @@ const SignUp = () => {
                                 <span className="label-text">Email</span>
                             </label>
                             <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input bg-slate-100" />
-                            {errors.email && <span className="text-red-500">Name field is required</span>}
+                            {errors.email && <span className="text-red-500">email field is required</span>}
                         </div>
 
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo Url</span>
                             </label>
-                            <input type="text" {...register("photoURL", { required: true })} placeholder="Photo URL" className="input bg-slate-100" required />
+                            <input type="text" {...register("photoURL", { required: true })} placeholder="Photo URL" className="input bg-slate-100" />
                         </div>
 
                         <div className="form-control">
@@ -127,8 +127,7 @@ const SignUp = () => {
                                     placeholder="password"
                                     className="input bg-slate-100 w-full"
                                 />
-                                <button
-                                    type="button"
+                                <button type="button"
                                     onClick={() => setShowPassword(!showPassword)}
                                     className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500"
                                 >
