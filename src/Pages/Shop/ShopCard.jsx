@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 
 const ShopCard = ({ product }) => {
-    const { name, image, price, category } = product;
+    const { name, image, price, category, _id } = product;
     const {user} = useAuth();
     const [rating, setRating] = useState(4) // Initial value
 
@@ -23,16 +23,23 @@ const ShopCard = ({ product }) => {
                 image,
                 price
             }
-            axios.post('https:localhost:5000/carts', cartItem,)
+            axios.post('http://localhost:5000/carts', cartItem,)
             .then(res => {
                 console.log(res.data);
                 Swal.fire({
                     icon: "success",
-                    title: "Added to Cart",
-                    text: "Product has been added to your cart!",
-                    footer: '<a href="#">Why do I have this issue?</a>'
+                    title: `${name} has been added to your cart!`,
                   });
             })
+             .catch(err => {
+                 console.error(err);
+                 Swal.fire({
+                     icon: "error",
+                     title: "Oops...",
+                     text: "Failed to add product to cart!",
+                     footer: '<a href="#">Why do I have this issue?</a>'
+                   });
+             })
         } else {
             // Redirect to login page
             Swal.fire({
