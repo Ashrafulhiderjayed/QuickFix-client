@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 
-export const axiosSSecure = axios.create({
+const axiosSSecure = axios.create({
     baseURL: 'http://localhost:5000/', // Replace with your API endpoint
     headers: {
         'Authorization': 'Bearer YOUR_API_TOKEN' // Replace with your API token

@@ -2,10 +2,13 @@ import React, { useContext } from 'react';
 import logo from '../../../assets/logoPng.png';
 import { Link } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import { AuthContext } from '../../../providers/AuthProvider';
+import useCart from '../../../hooks/useCart';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogout = () => {
     logOut()
@@ -17,6 +20,12 @@ const Navbar = () => {
       <li><Link to="/">Home</Link></li>
       <li><Link to="shop">Shop</Link></li>
       <li><Link to="/">Appointment</Link></li>
+      <li><Link to="">
+        <div className="indicator">
+          <span className="indicator-item badge badge-secondary">{cart?.length}+</span>
+          <button className="btn btn-sm"><FaShoppingCart /></button>
+        </div>
+      </Link></li>
     </>
   );
 
@@ -54,7 +63,7 @@ const Navbar = () => {
 
         {/* Navbar Center */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 items-center">
             {navItems}
           </ul>
         </div>
@@ -62,10 +71,10 @@ const Navbar = () => {
         {/* Navbar End */}
         <div className="navbar-end">
           {
-            user ? 
-            <><button onClick={handleLogout} className='btn btn-error'>Logout</button> </>
-            :
-            <><Link to="login" className="btn border-b-4 border-b-red-400"><FaUser /> Login</Link></>
+            user ?
+              <><button onClick={handleLogout} className='btn btn-error'>Logout</button> </>
+              :
+              <><Link to="login" className="btn border-b-4 border-b-red-400"><FaUser /> Login</Link></>
           }
         </div>
       </div>
