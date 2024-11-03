@@ -23,7 +23,8 @@ const ShopCard = ({ product }) => {
                 email: user.email,
                 name,
                 image,
-                price
+                price,
+                category
             }
             axiosSecure.post('/carts', cartItem,)
             .then(res => {
