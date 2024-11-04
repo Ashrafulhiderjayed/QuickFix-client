@@ -1,4 +1,4 @@
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -11,6 +11,7 @@ const Cart = () => {
     const axiosSecure = useAxiosSecure();
 
     const handleDelete = id => {
+        // console.log(id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -79,14 +80,14 @@ const Cart = () => {
                                 </td>
                                 <td>
                                     <div>{item.name}</div>
-                                    <div className="text-sm opacity-50">{item?.category}</div>
+                                    <div className="text-sm opacity-50"><span className="font-semibold">category:</span> {item?.category}</div>
                                 </td>
                                 <td>${item.price}</td>
                                 <th>
                                     <button
                                         onClick={() => handleDelete(item._id)}
                                         className="btn btn-ghost btn-lg">
-                                        <FaTrashAlt className="text-red-600"></FaTrashAlt>
+                                        <FaTrash className="text-red-600"></FaTrash>
                                     </button>
                                 </th>
                             </tr>)
