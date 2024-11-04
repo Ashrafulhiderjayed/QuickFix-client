@@ -1,16 +1,43 @@
-import axios from 'axios';
-import React from 'react';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import useAuth from "./useAuth";
 
-
-const axiosSSecure = axios.create({
-    baseURL: 'http://localhost:5000/', // Replace with your API endpoint
-    // headers: {
-    //     'Authorization': 'Bearer YOUR_API_TOKEN' // Replace with your API token
-    // }  // Add any other headers you need for your API requests  // e.g., 'Content-Type': 'application/json'  // or 'Accept': 'application/json'  // etc.  // Make sure to replace YOUR_API_TOKEN with your actual API token.  // Make sure to handle token expiration and refresh logic as needed.  // e.g., use useEffect to check token expiration and refresh it if necessary.  // Also, consider using a library like axios-jwt-auth or react-jwt to handle JWT authentication.  // Make sure to handle any potential errors or exceptions that may occur during API requests.  // e.g., use try/catch blocks or error boundaries.  // Make sure to use appropriate error handling strategies
+const axiosSecure = axios.create({
+    baseURL: 'http://localhost:5000/'
 })
-
 const useAxiosSecure = () => {
-    return axiosSSecure;
+    const navigate = useNavigate();
+    const { logOut } = useAuth();
+
+    // request interceptor to add authorization header for every secure call to teh api
+    axiosSecure.interceptors.request.use(function (config) {
+        const token = localStorage.getItem('access-token')
+        // console.log('request stopped by interceptors', token)
+        config.headers.authorization = `Bearer ${token}`;
+        return config;
+    }, function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+    });
+
+
+    // intercepts 401 and 403 status
+    axiosSecure.interceptors.response.use(function (response) {
+        return response;
+    }, async (error) => {
+        const status = error.response.status;
+        // console.log('status error in the interceptor', status);
+        // for 401 or 403 logout the user and move the user to the login
+        if (status === 401) {
+            // For 401 (Unauthorized), logout the user and redirect to login
+            await logOut();
+            navigate('/login');
+        } 
+        return Promise.reject(error);
+    })
+
+
+    return axiosSecure;
 };
 
 export default useAxiosSecure;
