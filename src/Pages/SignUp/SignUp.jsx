@@ -14,7 +14,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
     const axiosPublic = useAxiosPublic();
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, setError, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -48,6 +48,17 @@ const SignUp = () => {
                     })
                     .catch(error => console.log(error));
             })
+            .catch(error => {
+                // Check if the error is due to an existing user
+                if (error.code === 'auth/email-already-in-use') {
+                    setError("email", {
+                        type: "manual",
+                        message: "The email address is already in use by another account."
+                    });
+                } else {
+                    console.log(error); // Log other potential errors
+                }
+            });
             //error handling using swal
             // .catch(error => {
             //     // Check if the error is due to an existing user
@@ -118,7 +129,7 @@ const SignUp = () => {
                                 <span className="label-text">Email</span>
                             </label>
                             <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input bg-slate-100" />
-                            {errors.email && <span className="text-red-500">email field is required</span>}
+                            {errors.email && <span className="text-red-500">{errors.email.message || "Email field is required"}</span>}
                         </div>
 
                         <div className="form-control">
