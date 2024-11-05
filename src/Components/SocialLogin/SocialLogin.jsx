@@ -1,9 +1,7 @@
 import React from 'react';
-import { FaEye, FaEyeSlash, FaFacebookF } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
 import { IoLogoGoogleplus } from "react-icons/io";
 import { FaLinkedinIn } from "react-icons/fa";
-import { FiRefreshCw } from "react-icons/fi";
-import { FaGoogle } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useNavigate } from 'react-router-dom';

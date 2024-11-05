@@ -17,7 +17,7 @@ const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
-    
+
     // State to toggle password visibility
     const [showPassword, setShowPassword] = useState(false);
 
@@ -26,15 +26,14 @@ const SignUp = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                // console.log(loggedUser);
-
+    
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const userInfo = { name: data.name, email: data.email };
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
-                                    console.log('user added to the database');
+                                    console.log('User added to the database');
                                     reset();
                                     Swal.fire({
                                         position: 'top-end',
@@ -48,8 +47,22 @@ const SignUp = () => {
                             });
                     })
                     .catch(error => console.log(error));
-            });
+            })
+            //error handling using swal
+            // .catch(error => {
+            //     // Check if the error is due to an existing user
+            //     if (error.code === 'auth/email-already-in-use') {
+            //         Swal.fire({
+            //             icon: 'error',
+            //             title: 'User already exists',
+            //             text: 'The email address is already in use by another account.',
+            //         });
+            //     } else {
+            //         console.log(error); // Log other potential errors
+            //     }
+            // });
     };
+    
 
     const handleGoogleSignIn = async () => {
         try {

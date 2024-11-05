@@ -8,8 +8,8 @@ const Dashboard = () => {
     const [cart] = useCart();
 
     // get isAdmin value from the database
-    // const [isAdmin] = useAdmin();
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    // const isAdmin = true;
 
     return (
         <div className="flex">
