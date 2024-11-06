@@ -15,7 +15,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 const SignUp = () => {
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset, setError, formState: { errors } } = useForm();
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
 
     // State to toggle password visibility

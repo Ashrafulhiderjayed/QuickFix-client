@@ -56,15 +56,15 @@ const Shop = () => {
 
             {/* Shop Tab */}
             <div className='flex gap-5 justify-center py-10 bg-white'>
-                <div onClick={() => handleCategoryClick('Sounds')}>
+                <div onClick={() => handleCategoryClick('Sounds')} className='cursor-pointer'>
                     <img src={soundTab} alt="" className='border-4 border-black h-52 rounded-full' />
                     <p className='hover:text-mainColor text-center pt-4 text-xl font-semibold font-mono'>Sounds</p>
                 </div>
-                <div onClick={() => handleCategoryClick('Wheels')}>
+                <div onClick={() => handleCategoryClick('Wheels')} className='cursor-pointer'>
                     <img src={wheelsTab} alt="" className='border-4 border-black h-52 rounded-full' />
                     <p className='hover:text-mainColor text-center pt-4 text-xl font-semibold font-mono'>Wheels</p>
                 </div>
-                <div onClick={() => handleCategoryClick('Featured')}>
+                <div onClick={() => handleCategoryClick('Featured')} className='cursor-pointer'>
                     <img src={featuredTab} alt="" className='border-4 border-black h-52 rounded-full' />
                     <p className='hover:text-mainColor text-center pt-4 text-xl font-semibold font-mono'>Featured</p>
                 </div>
