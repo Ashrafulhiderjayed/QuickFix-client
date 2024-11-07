@@ -43,7 +43,7 @@ const Professional = () => {
           WE ARE A PROFESSIONAL AUTO REPAIR SERVICE
         </h2>
         <p className="my-8 text-justify">
-          AutoTech is a well-established auto repair shop in Sydney, Brisbane, Parth.
+          QuickFix Motors is a well-established auto repair shop in Sydney, Brisbane, Parth.
           Our company offers car maintenance to major repairs since 1971. We are
           a company that has built its reputation on reliable services for all
           times of vehicles in Sydney, Australia.

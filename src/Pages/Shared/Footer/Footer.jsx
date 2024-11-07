@@ -21,7 +21,7 @@ const Footer = () => {
         <div>
           <img className='h-16 bg-red-500 rounded-lg' src={logo} alt="" data-aos="fade-left"/>
           <p>QuickFix Motors Ltd.<br/>Providing reliable and affordable toy since 1992</p>
-          <p className='text-lightWhite text-justify mt-8 mb-2'>Discover peace of mind on the road with our expert car repair services. <br /> At AutoTech, our dedicated team of skilled technicians is committed to <br /> delivering reliable and top-notch repairs for your vehicle. </p>
+          <p className='text-lightWhite text-justify mt-8 mb-2'>Discover peace of mind on the road with our expert car repair services. <br /> At QuickFix Motors, our dedicated team of skilled technicians is committed to <br /> delivering reliable and top-notch repairs for your vehicle. </p>
           {/* <section className='flex gap-4' data-aos="fade-up" data-aos-delay="50"> */}
           <section className='flex gap-4'>
             <a href="https://www.facebook.com/" data-aos="fade-up" data-aos-delay="10">
@@ -61,7 +61,7 @@ const Footer = () => {
           <a className="link link-hover text-lightWhite">Contact: +61-2-987-9876</a>
         </div> 
         <div>
-          <span className="font-extrabold text-white mb-5 text-lg">About AutoTech</span> 
+          <span className="font-extrabold text-white mb-5 text-lg">About QuickFix Motors</span> 
           <p><SlArrowRight className='inline' size="0.8em" /><a className="link link-hover text-lightWhite"> About Us</a> </p>
           <p><SlArrowRight className='inline' size="0.8em" /><a className="link link-hover text-lightWhite"> Contact</a> </p>
           <p><SlArrowRight className='inline' size="0.8em" /><a className="link link-hover text-lightWhite"> Services</a> </p>
@@ -72,8 +72,7 @@ const Footer = () => {
         <div>
           <span className="font-extrabold text-white mb-5 text-lg">Get In Touch</span> 
           <p><SlLocationPin className='inline mr-2' size="0.8em" /><a className="link link-hover text-lightWhite"> 42 Circular Quay, Sydney, NSW</a> </p>
-          {/* <p><SlEnvolopeLetter className='inline mr-2' size="0.8em" /><a className="link link-hover text-lightWhite"></a> support@autotech.com </p> */}
-          <p><RiRedPacketLine className='inline mr-2' size="0.8em" /><a className="link link-hover text-lightWhite"></a> support@autotech.com </p>
+          <p><RiRedPacketLine className='inline mr-2' size="0.8em" /><a className="link link-hover text-lightWhite"></a> support@quickFixmotors.com </p>
           <p><FaPhone className='inline mr-2 hover:text-white' size="0.8em" /><a className="link link-hover text-lightWhite"> Phone:</a>+61-2-123-1234 </p>
 
           <h4 className='mt-3 font-semibold'>Subscribe Newsletter</h4>
@@ -90,7 +89,7 @@ const Footer = () => {
         </div>
       </footer>
       <hr />
-      <p className='text-center font-medium  p-5'>&copy; {currentYear} AUTOTECH, Inc. All rights reserved.</p>
+      <p className='text-center font-medium  p-5'>&copy; {currentYear} QuickFix Motors, Inc. All rights reserved.</p>
       </section>
     );
 };
