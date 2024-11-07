@@ -1,10 +1,8 @@
 import { FaFacebookF, FaEye, FaEyeSlash } from "react-icons/fa";
-// import { NavLink } from 'react-router-dom';
-// import { FaFacebookF } from "react-icons/fa";
 import { IoLogoGoogleplus } from "react-icons/io";
 import { FaLinkedinIn } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import './SignUp.css'
+import './SignUp.css';
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -18,11 +16,12 @@ const SignUp = () => {
     const { createUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    // State to toggle password visibility
+    // State to toggle password visibility and loading state
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const onSubmit = data => {
-        console.log(data);
+        setLoading(true);  // Start loading
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
@@ -33,7 +32,6 @@ const SignUp = () => {
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
-                                    console.log('User added to the database');
                                     reset();
                                     Swal.fire({
                                         position: 'top-end',
@@ -44,38 +42,29 @@ const SignUp = () => {
                                     });
                                     navigate('/');
                                 }
-                            });
+                            })
+                            .finally(() => setLoading(false));  // Stop loading
                     })
-                    .catch(error => console.log(error));
+                    .catch(error => {
+                        console.log(error);
+                        setLoading(false);  // Stop loading in case of error
+                    });
             })
             .catch(error => {
-                // Check if the error is due to an existing user
                 if (error.code === 'auth/email-already-in-use') {
                     setError("email", {
                         type: "manual",
                         message: "The email address is already in use by another account."
                     });
                 } else {
-                    console.log(error); // Log other potential errors
+                    console.log(error);
                 }
+                setLoading(false);  // Stop loading in case of error
             });
-            //error handling using swal
-            // .catch(error => {
-            //     // Check if the error is due to an existing user
-            //     if (error.code === 'auth/email-already-in-use') {
-            //         Swal.fire({
-            //             icon: 'error',
-            //             title: 'User already exists',
-            //             text: 'The email address is already in use by another account.',
-            //         });
-            //     } else {
-            //         console.log(error); // Log other potential errors
-            //     }
-            // });
     };
-    
 
     const handleGoogleSignIn = async () => {
+        setLoading(true);
         try {
             const result = await signInWithGoogle();
             const loggedUser = result.user;
@@ -91,6 +80,8 @@ const SignUp = () => {
             navigate('/');
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -112,7 +103,9 @@ const SignUp = () => {
                     <h2 className="text-center text-5xl font-bold pt-8">Sign up</h2>
                     <span className="flex align-middle justify-center mt-7">
                         <FaFacebookF className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content" />
-                        <button onClick={handleGoogleSignIn}><IoLogoGoogleplus className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content mx-4" /></button>
+                        <button onClick={handleGoogleSignIn} disabled={loading}>
+                            <IoLogoGoogleplus className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content mx-4" />
+                        </button>
                         <FaLinkedinIn className="border border-slate-400 rounded-full text-xl p-2 shadow-md hover:shadow-transparent box-content" />
                     </span>
                     <p className="text-zinc-600 text-center pt-2">or use your email for registration</p>
@@ -161,7 +154,12 @@ const SignUp = () => {
                             {errors.password && <span className="text-red-500">Password field is required</span>}
                         </div>
                         <div className="form-control my-6">
-                            <button className="btn bg-loginOrangeColor text-white font-bold w-3/5 px-2 ml-16 rounded-3xl border-none shadow-2xl hover:shadow-xl hover:bg-black">SIGN UP</button>
+                            <button
+                                className="btn bg-loginOrangeColor text-white font-bold w-3/5 px-2 ml-16 rounded-3xl border-none shadow-2xl hover:shadow-xl hover:bg-black"
+                                disabled={loading}
+                            >
+                                {loading ? "Signing up..." : "SIGN UP"}
+                            </button>
                         </div>
                     </form>
                 </div>
