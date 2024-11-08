@@ -2,10 +2,11 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useShop from "../../../../hooks/useShop";
 
 
 const ManageItems = () => {
-    const [menu, , refetch] = useMenu();
+    const [shop, , refetch] = useShop();
     const axiosSecure = useAxiosSecure();
 
     const handleDeleteItem = (item) => {
@@ -19,7 +20,7 @@ const ManageItems = () => {
             confirmButtonText: "Yes, delete it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const res = await axiosSecure.delete(`/menu/${item._id}`);
+                const res = await axiosSecure.delete(`/shop/${item._id}`);
                 // console.log(res.data);
                 if (res.data.deletedCount > 0) {
                     // refetch to update the ui
