@@ -17,7 +17,6 @@ const AddItems = () => {
 
     const onSubmit = async (data) => {
         setLoading(true);
-        console.log(data);
         const imageFile = { image: data.image[0] };
         try {
             const res = await axiosPublic.post(image_hosting_api, imageFile, {
