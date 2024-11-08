@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useShop from "../../../../hooks/useShop";
+import Title from "../../../../Components/Title/Title";
 
 
 const ManageItems = () => {
@@ -41,7 +42,17 @@ const ManageItems = () => {
 
     return (
         <div>
-            <SectionTitle heading="Manage All Items" subHeading="Hurry up"></SectionTitle>
+            <div className='text-center mx-auto max-w-screen-xl mb-10'>
+                <div className='flex justify-center'>
+                    <div>
+                        <div className='ms-2'>
+                            <Title text="Shop item List"></Title>
+                        </div>
+                        <h2 className="text-lg lg:text-3xl font-semibold">UPdate and Delete Car Service Item</h2>
+                        
+                    </div>
+                </div>
+            </div>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table w-full">
@@ -60,7 +71,7 @@ const ManageItems = () => {
                         </thead>
                         <tbody>
                             {
-                                menu.map((item, index) => <tr key={item._id}>
+                                shop.map((item, index) => <tr key={item._id}>
                                     <td>
                                         {index + 1}
                                     </td>
@@ -76,12 +87,11 @@ const ManageItems = () => {
                                     <td>
                                         {item.name}
                                     </td>
-                                    <td className="text-right">${item.price}</td>
+                                    <td>${item.price}</td>
                                     <td>
-                                        <span>{item._id}</span>
                                         <Link to={`/dashboard/updateItem/${item._id}`}>
                                             <button
-                                                className="btn btn-ghost btn-lg bg-orange-500">
+                                                className="btn btn-ghost btn-md bg-green-500">
                                                 <FaEdit className="text-white 
                                         "></FaEdit>
                                             </button>
