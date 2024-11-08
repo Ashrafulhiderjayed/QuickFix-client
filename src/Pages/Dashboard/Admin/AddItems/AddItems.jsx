@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaToolbox } from 'react-icons/fa';
 import Swal from 'sweetalert2';
@@ -11,10 +11,13 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const AddItems = () => {
     const { register, handleSubmit, reset } = useForm();
+    const [loading, setLoading] = useState(false);
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
     const onSubmit = async (data) => {
+        setLoading(true);
+        console.log(data);
         const imageFile = { image: data.image[0] };
         try {
             const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -29,7 +32,7 @@ const AddItems = () => {
                     image: res.data.data.display_url
                 };
                 
-                const menuRes = await axiosSecure.post('/menu', menuItem);
+                const menuRes = await axiosSecure.post('/shop', menuItem);
                 if (menuRes.data.insertedId) {
                     Swal.fire({
                         position: 'top-end',
@@ -51,6 +54,7 @@ const AddItems = () => {
                 showConfirmButton: true
             });
         }
+        setLoading(false);
     };
 
     return (
@@ -136,8 +140,8 @@ const AddItems = () => {
                     </div>
 
                     {/* Submit Button */}
-                    <button className="btn w-full mt-6 flex items-center justify-center gap-2 bg-[#db2411] hover:bg-[#b71f10] text-white">
-                        Add Item <FaToolbox />
+                    <button disabled={loading} className="btn w-full mt-6 flex items-center justify-center gap-2 bg-[#db2411] hover:bg-[#b71f10] text-white">
+                         {loading ? <span className="loading loading-spinner">Adding Item</span> : 'Add Item'} <FaToolbox />
                     </button>
                 </form>
             </div>
