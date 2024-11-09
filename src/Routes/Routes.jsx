@@ -62,6 +62,7 @@ const router = createBrowserRouter([
       {
         path: "updateItem/:id",
         element: <AdminRoute> <UpdateItem /> </AdminRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/shop/${params.id}`)
       },
     ],
   },
