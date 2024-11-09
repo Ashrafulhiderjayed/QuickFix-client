@@ -12,6 +12,7 @@ import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 import AddItems from "../Pages/Dashboard/Admin/AddItems/AddItems";
 import ManageItems from "../Pages/Dashboard/Admin/ManageItems/ManageItems";
 import UpdateItem from "../Pages/Dashboard/Admin/UpdateItem/UpdateItem";
+import Payment from "../Pages/Dashboard/UserDashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ const router = createBrowserRouter([
       // normal users routes here
       {
         path: "cart",
-        element: <AdminRoute><Cart /></AdminRoute>,
+        element: <Cart />,
+      },
+      {
+        path: "payment",
+        element: <Payment />,
       },
 
       // Admin routes here
