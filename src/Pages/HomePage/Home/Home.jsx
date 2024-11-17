@@ -3,6 +3,7 @@ import Carousel from '../Carousel/Carousel';
 import Professional from '../Professional/Professional';
 import Subscribe from '../Subscribe/Subscribe';
 import Testimonials from './Testimonials/Testimonials';
+import Technician from '../Technician/Technician';
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Carousel />
             <Professional />
             <Subscribe />
+            <Technician />
             <Testimonials />
         </div>
     );
