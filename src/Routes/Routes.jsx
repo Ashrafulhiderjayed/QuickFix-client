@@ -18,6 +18,7 @@ import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import UserHome from "../Pages/Dashboard/UserDashboard/Payment/UserHome/UserHome";
 import ServicesDetails from "../Pages/ServicesDetails/ServicesDetails";
 import Appointment from "../Pages/Appointment/Appointment";
+import MyAppointments from "../Pages/Dashboard/UserDashboard/Payment/MyAppointments/MyAppointments";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "myAppointments",
+        element: <MyAppointments />,
       },
       {
         path: "payment",
