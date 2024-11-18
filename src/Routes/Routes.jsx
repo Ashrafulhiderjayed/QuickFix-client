@@ -17,6 +17,7 @@ import PaymentHistory from "../Pages/Dashboard/UserDashboard/Payment/PaymentHist
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import UserHome from "../Pages/Dashboard/UserDashboard/Payment/UserHome/UserHome";
 import ServicesDetails from "../Pages/ServicesDetails/ServicesDetails";
+import Appointment from "../Pages/Appointment/Appointment";
 
 const router = createBrowserRouter([
   {
