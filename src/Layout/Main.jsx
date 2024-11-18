@@ -10,7 +10,7 @@ const Main = () => {
     const removeNavFooter = location.pathname.includes('login') || location.pathname.includes('signup');
 
     return (
-        <div>
+        <div className='bg-white'>
             { removeNavFooter || <TopNav></TopNav>}
             { removeNavFooter || <Navbar></Navbar>}
             <Outlet />

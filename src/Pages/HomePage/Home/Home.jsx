@@ -4,14 +4,16 @@ import Professional from '../Professional/Professional';
 import Subscribe from '../Subscribe/Subscribe';
 import Testimonials from './Testimonials/Testimonials';
 import Technician from '../Technician/Technician';
+import Services from '../Services/Services';
 
 const Home = () => {
     return (
         <div>
             <Carousel />
             <Professional />
-            <Subscribe />
+            <Services />
             <Technician />
+            <Subscribe />
             <Testimonials />
         </div>
     );

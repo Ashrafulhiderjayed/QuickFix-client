@@ -16,6 +16,7 @@ import Payment from "../Pages/Dashboard/UserDashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/UserDashboard/Payment/PaymentHistory/PaymentHistory";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import UserHome from "../Pages/Dashboard/UserDashboard/Payment/UserHome/UserHome";
+import ServicesDetails from "../Pages/ServicesDetails/ServicesDetails";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/service/:id',
-        element: <Services></Services>,
+        element: <ServicesDetails />,
         loader: ({params}) => fetch(`http://localhost:5000/service/${params.id}`)
       },
     ],
