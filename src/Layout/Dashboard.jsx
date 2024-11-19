@@ -3,6 +3,7 @@ import { FaCalendarCheck } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
+import { BiSupport } from "react-icons/bi";
 
 
 const Dashboard = () => {
@@ -87,14 +88,21 @@ const Dashboard = () => {
                             Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/order/salad">
+                        <NavLink to="/order/shop">
                             <FaSearch></FaSearch>
-                            Menu</NavLink>
+                            Shop</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/order/contact">
+                        <a href="/order/contact" target="_blank" rel="noopener noreferrer">
                             <FaEnvelope></FaEnvelope>
-                            Contact</NavLink>
+                            Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <BiSupport></BiSupport>
+                            Support
+                        </a>
                     </li>
                 </ul>
             </div>
