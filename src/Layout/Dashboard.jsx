@@ -53,11 +53,11 @@ const Dashboard = () => {
                                         <FaHome></FaHome>
                                         User Home</NavLink>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <NavLink to="/dashboard/reservation">
                                         <FaCalendar></FaCalendar>
                                         Reservation</NavLink>
-                                </li>
+                                </li> */}
                                 <li>
                                     <NavLink to="/dashboard/cart">
                                         <FaShoppingCart></FaShoppingCart>
@@ -68,11 +68,11 @@ const Dashboard = () => {
                                         <FaCalendarCheck></FaCalendarCheck>
                                         My Appointments</NavLink>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <NavLink to="/dashboard/review">
                                         <FaAd></FaAd>
                                         Add a Review</NavLink>
-                                </li>
+                                </li> */}
                                 <li>
                                     <NavLink to="/dashboard/paymentHistory">
                                         <FaList></FaList>
