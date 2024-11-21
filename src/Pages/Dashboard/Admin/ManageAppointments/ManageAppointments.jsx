@@ -18,8 +18,8 @@ const ManageAppointments = () => {
 
 
 
-    const handleDeleteAppointment = (user) => {
-        console.log(user);
+    const handleDeleteAppointment = (appointment) => {
+        // console.log(appointment);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -30,13 +30,13 @@ const ManageAppointments = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/users/${user._id}`)
+                axiosSecure.delete(`/appointments/${appointment._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "User has been deleted.",
+                                text: "Appointment has been deleted.",
                                 icon: "success"
                             });
                         }

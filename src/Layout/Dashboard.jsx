@@ -88,18 +88,18 @@ const Dashboard = () => {
                             Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/order/shop">
+                        <NavLink to="/shop">
                             <FaSearch></FaSearch>
                             Shop</NavLink>
                     </li>
                     <li>
-                        <a href="/order/contact" target="_blank" rel="noopener noreferrer">
+                        <a href="/">
                             <FaEnvelope></FaEnvelope>
                             Contact
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/">
                             <BiSupport></BiSupport>
                             Support
                         </a>
