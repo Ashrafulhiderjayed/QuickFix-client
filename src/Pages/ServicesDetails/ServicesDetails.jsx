@@ -86,7 +86,7 @@ const ServicesDetails = () => {
       setLoading(false); // Set loading to false after the request completes
   }
 
-    // form.reset();
+    form.reset();
   }
 
   useEffect(() => {
