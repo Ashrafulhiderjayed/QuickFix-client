@@ -19,6 +19,7 @@ import UserHome from "../Pages/Dashboard/UserDashboard/Payment/UserHome/UserHome
 import ServicesDetails from "../Pages/ServicesDetails/ServicesDetails";
 import Appointment from "../Pages/Appointment/Appointment";
 import MyAppointments from "../Pages/Dashboard/UserDashboard/Payment/MyAppointments/MyAppointments";
+import ManageAppointments from "../Pages/Dashboard/Admin/ManageAppointments/ManageAppointments";
 
 const router = createBrowserRouter([
   {
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
       {
         path: "manageItems",
         element: <AdminRoute> <ManageItems /> </AdminRoute>,
+      },
+      {
+        path: "manageAppointments",
+        element: <AdminRoute> <ManageAppointments /> </AdminRoute>,
       },
       {
         path: "updateItem/:id",
