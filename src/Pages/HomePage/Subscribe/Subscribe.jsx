@@ -4,7 +4,8 @@ import { MdChevronRight } from "react-icons/md";
 
 const Subscribe = () => {
     return (
-        <section className='text-center flex-col mx-auto max-w-7xl'>
+        <section className='bg-slate-100 py-5'>
+            <div className='text-center flex-col mx-auto max-w-7xl'>
             <div className='text-center mx-auto max-w-screen-xl'>
                 <div className='flex justify-center'>
                     <div>
@@ -28,6 +29,7 @@ const Subscribe = () => {
 
             </div>
 
+        </div>
         </section>
     );
 };
