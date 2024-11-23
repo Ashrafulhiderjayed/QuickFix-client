@@ -48,7 +48,7 @@ const Technician = () => {
         // const { name, Experience, skill, Contact, price, img, location, _id } = item;
         // if (user && user.email) {
         //     const cartItem = { menuItemId: name, Experience, skill, Contact, price, img, location, _id, email: user.email }
-        //     fetch('http://localhost:5000/carts', {
+        //     fetch('https://quick-fix-server-wine.vercel.app/carts', {
         //         method: 'POST',
         //         headers: {
         //             'content-type': 'application/json'

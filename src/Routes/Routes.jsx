@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       {
         path: '/service/:id',
         element: <ServicesDetails />,
-        loader: ({params}) => fetch(`http://localhost:5000/service/${params.id}`)
+        loader: ({params}) => fetch(`https://quick-fix-server-wine.vercel.app/service/${params.id}`)
       },
     ],
   },
@@ -103,7 +103,7 @@ const router = createBrowserRouter([
       {
         path: "updateItem/:id",
         element: <AdminRoute> <UpdateItem /> </AdminRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/shop/${params.id}`)
+        loader: ({params}) => fetch(`https://quick-fix-server-wine.vercel.app/shop/${params.id}`)
       },
     ],
   },

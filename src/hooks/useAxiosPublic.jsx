@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const axiosPublic = axios.create({
-    baseURL: 'http://localhost:5000' // Replace with your API endpoint
+    baseURL: 'https://quick-fix-server-wine.vercel.app' // Replace with your API endpoint
 })
 
 const useAxiosPublic = () => {

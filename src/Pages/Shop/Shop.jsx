@@ -12,7 +12,7 @@ const Shop = () => {
 
     // Fetch the shop data from JSON file and update the products state when the component mounts
     useEffect(() => {
-        fetch('http://localhost:5000/shop')
+        fetch('https://quick-fix-server-wine.vercel.app/shop')
             .then(response => response.json())
             .then(data => setProducts(data))
             .catch(error => console.error('Error:', error));
